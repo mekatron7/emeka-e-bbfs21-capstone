@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {Col, Container, Row} from "react-bootstrap";
+import Login from "./components/Login";
+import {connect} from "react-redux";
+import SiteRouter from "./components/SiteRouter";
 
-function App() {
+function App({currentUser}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Container fluid>
+        <Row>
+          {currentUser !== null ? <Col><SiteRouter/></Col>
+              : <Col xs={6}><Login/></Col>}
+        </Row>
+      </Container>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+    console.log(state)
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(App)

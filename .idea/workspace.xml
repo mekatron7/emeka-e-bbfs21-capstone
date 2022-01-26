@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f37be102-87e6-4a33-90fa-9af5b6b53338" name="Changes" comment="frontend files included">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="f37be102-87e6-4a33-90fa-9af5b6b53338" name="Changes" comment="backend mostly completed and improved search functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/BBProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/BBProductsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/RenovationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/RenovationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.h2.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data.h2.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.h2.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/data.h2.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +25,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -66,6 +72,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643060773376</updated>
-      <workItem from="1643060775138" duration="32743000" />
+      <workItem from="1643060775138" duration="65855000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1643061307647</created>
@@ -91,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643062297699</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="backend mostly completed and improved search functionality">
+      <created>1643100265395</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1643100265395</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +229,7 @@
     </ignored-roots>
     <MESSAGE value="Initial commit" />
     <MESSAGE value="frontend files included" />
-    <option name="LAST_COMMIT_MESSAGE" value="frontend files included" />
+    <MESSAGE value="backend mostly completed and improved search functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="backend mostly completed and improved search functionality" />
   </component>
 </project>

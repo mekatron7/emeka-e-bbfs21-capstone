@@ -44,7 +44,7 @@ public class RenovationsController {
         switch(renovationType) {
             case HOME_THEATER:
                 defaultItemSpots.add(new Item("TV", renovation.id));
-                defaultItemSpots.add(new Item("Sound System", renovation.id));
+                defaultItemSpots.add(new Item("Home Audio", renovation.id));
                 defaultItemSpots.add(new Item("Console", renovation.id));
                 defaultItemSpots.add(new Item("TV Stand", renovation.id));
                 break;

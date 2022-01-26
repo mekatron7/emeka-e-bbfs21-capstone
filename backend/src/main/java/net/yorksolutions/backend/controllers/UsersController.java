@@ -24,7 +24,7 @@ public class UsersController {
     }
 
     @CrossOrigin
-    @GetMapping("/login")
+    @PostMapping("/login")
     HashMap<String, Object> login(@RequestBody User user) {
         var response = new HashMap<String, Object>();
         var foundUser = userRepo.findByEmailAndPassword(user.email, user.password);
