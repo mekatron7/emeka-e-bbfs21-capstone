@@ -25,8 +25,8 @@ public class RenovationsController {
     ItemRepo itemRepo;
 
     @CrossOrigin
-    @PutMapping("/newRenovation")
-    String newRenovation(@RequestHeader Long id, @RequestHeader String type) {
+    @PostMapping("/newRenovation")
+    RenovationPlan newRenovation(@RequestHeader Long id, @RequestHeader String type) {
         var user = userRepo.findById(id).orElseThrow();
         String defaultName = "Home Theater Plan";
         RenovationType renovationType = RenovationType.HOME_THEATER;
@@ -40,6 +40,7 @@ public class RenovationsController {
             renovationType = RenovationType.PC_STREAMER;
         }
         var renovation = new RenovationPlan(id, defaultName, renovationType);
+        renovationRepo.save(renovation);
 
         switch(renovationType) {
             case HOME_THEATER:
@@ -66,12 +67,12 @@ public class RenovationsController {
                 defaultItemSpots.add(new Item("Lighting", renovation.id));
                 defaultItemSpots.add(new Item("Stream Deck", renovation.id));
         }
-
+        itemRepo.saveAll(defaultItemSpots);
         renovation.items.addAll(defaultItemSpots);
         user.planList.add(renovation);
         renovationRepo.save(renovation);
         userRepo.save(user);
-        return "success";
+        return renovation;
     }
 
     @CrossOrigin
@@ -83,9 +84,9 @@ public class RenovationsController {
 
     @CrossOrigin
     @PutMapping("/editItem")
-    String editItem(@RequestBody Item item) {
+    RenovationPlan editItem(@RequestBody Item item) {
         itemRepo.save(item);
-        return "success";
+        return renovationRepo.findById(item.planId).get();
     }
 
     @CrossOrigin

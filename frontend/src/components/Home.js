@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
-import {Accordion, Tab, Tabs} from "react-bootstrap";
+import {Accordion, Button, Card, Col, Row, Tab, Tabs} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 function Home({user}) {
 
@@ -7,6 +8,9 @@ function Home({user}) {
         <Tabs transition={true} id="homeTabs" className="mb-3">
             <Tab eventKey="userInfo" title="User Info">
                 <h1>{user.firstName}'s Info</h1>
+                <Button variant="outline-primary" size="sm">
+                    <Link to="/newrenovation">Start New Renovation</Link>
+                </Button>
             </Tab>
             <Tab eventKey="renovations" title="Your Renovation Plans">
                 {user.planList.length === 0 ? "Looks like you haven't started any renovation plans yet. What are you waiting for, go start one!"
@@ -16,13 +20,21 @@ function Home({user}) {
                             <Accordion.Item eventKey={idx}>
                                 <Accordion.Header>{plan.planName}</Accordion.Header>
                                 <Accordion.Body>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est laborum.
+                                    <Row>
+                                        {plan.items.map((item, idx2) =>
+                                            <Col sm={2} className='mt-4'>
+                                                <Card>
+                                                    <Card.Img variant="top" src="holder.js/100px180" />
+                                                    <Card.Body>
+                                                        <Card.Title>{item.itemSpotName}</Card.Title>
+                                                        <Card.Text>
+                                                            {item?.sku}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        )}
+                                    </Row>
                                 </Accordion.Body>
                             </Accordion.Item>
                         )}

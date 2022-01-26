@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Embeddable
 @Entity
+@Embeddable
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -5,6 +5,8 @@ const LOGOUT = 'bby-capstone/LOGOUT'
 const SHOW_REGISTER_MODAL = 'bby-capstone/SHOW_REGISTER_MODAL'
 const HIDE_REGISTER_MODAL = 'bby-capstone/HIDE_REGISTER_MODAL'
 const RETRIEVE_PRODUCTS = 'bby-capstone/RETRIEVE_PRODUCTS'
+const SET_CURRENT_RENOVATION = 'bby-capstone/SET_CURRENT_RENOVATION'
+const SET_SPOT_NAME = 'bby-capstone/SET_SPOT_NAME'
 
 //Reducer
 const initialState = {
@@ -16,7 +18,7 @@ const initialState = {
     errorMessage: '',
     currentRenovation: null,
     spotName: '',
-    pageNumber: 0,
+    pageNumber: undefined
 }
 
 export default function reducer(state = initialState, action) {
@@ -51,6 +53,17 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 results: action.results
             }
+        case SET_CURRENT_RENOVATION:
+            return {
+                ...state,
+                currentRenovation: action.renovation
+            }
+        case SET_SPOT_NAME:
+            return {
+                ...state,
+                spotName: action.spotName,
+                results: null
+            }
         default:
             return state
     }
@@ -80,6 +93,14 @@ export function hideRegisterModal() {
 
 export function setResults(results) {
     return {type: RETRIEVE_PRODUCTS, results}
+}
+
+export function setCurrentRenovation(renovation) {
+    return {type: SET_CURRENT_RENOVATION, renovation}
+}
+
+export function setSpotName(spotName) {
+    return {type: SET_SPOT_NAME, spotName}
 }
 
 //Side Effects
@@ -146,7 +167,7 @@ export function getProducts(spotName, pageNumber) {
                 dispatch(getProductsBySubclass('GAMING MICE', pageNumber))
                 break
             case 'Monitor':
-                dispatch(getProductsBySubclass('MONITORS', pageNumber))
+                dispatch(getProductsBySubclass('GAMING MONITORS', pageNumber))
                 break
             case 'Headset':
                 dispatch(getProductsBySubclass('GAMING HEADSET', pageNumber))
@@ -280,7 +301,7 @@ export function getProductsByClasses(classes, pageNumber) {
     return function sideEffect(dispatch) {
         const pageParam = pageNumber === undefined ? '' : `?pageNum=${pageNumber}`
         fetch(`http://localhost:8080/api/products/byClasses${pageParam}`, {
-            method: "GET",
+            method: "POST",
             headers: {
                 'Content-Type' : 'application/json'
             },
@@ -298,7 +319,7 @@ export function getProductsByClasses(classes, pageNumber) {
 export function search(query, pageNumber) {
     return function sideEffect(dispatch) {
         const pageParam = pageNumber === undefined ? '' : `?pageNum=${pageNumber}`
-        fetch(`http://localhost:8080/api/products/byCategory${pageParam}`, {
+        fetch(`http://localhost:8080/api/products/search${pageParam}`, {
             method: "GET",
             headers: {
                 'search': query
@@ -308,6 +329,42 @@ export function search(query, pageNumber) {
                 return alert('Failed to retrieve products.')
             response.json().then(results => {
                 dispatch(setResults(results))
+            })
+        }).catch(error => alert(error))
+    }
+}
+
+export function createRenovation(id, type) {
+    return function sideEffect(dispatch) {
+        fetch("http://localhost:8080/api/renovations/newRenovation", {
+            method: "POST",
+            headers: {
+                'id': id,
+                'type': type
+            }
+        }).then(response => {
+            if (!response.ok)
+                return alert('Failed to connect to server.')
+            response.json().then(renovation => {
+                dispatch(setCurrentRenovation(renovation))
+            })
+        }).catch(error => alert(error))
+    }
+}
+
+export function editItem(item) {
+    return function sideEffect(dispatch) {
+        fetch("http://localhost:8080/api/renovations/editItem", {
+            method: "PUT",
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(item)
+        }).then(response => {
+            if (!response.ok)
+                return alert('Failed to connect to server.')
+            response.json().then(renovation => {
+                dispatch(setCurrentRenovation(renovation))
             })
         }).catch(error => alert(error))
     }

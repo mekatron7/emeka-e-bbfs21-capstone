@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class RenovationPlan {
 
     @JsonProperty
     @ElementCollection
-    public List<Item> items;
+    public List<Item> items = new ArrayList<>();
 
     @JsonProperty
     public Float budget;

@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f37be102-87e6-4a33-90fa-9af5b6b53338" name="Changes" comment="backend mostly completed and improved search functionality">
+    <list default="true" id="f37be102-87e6-4a33-90fa-9af5b6b53338" name="Changes" comment="frontend started. redux setup to connect to backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/BBProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/BBProductsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/RenovationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/RenovationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.h2.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data.h2.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.h2.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/data.h2.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/RenovationPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/RenovationPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.h2.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.h2.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NewRenovation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NewRenovation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Renovation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Renovation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SiteRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SiteRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/modules/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +36,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="24A5ucQk98DqMxKeYkpKFT77Yyh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -96,7 +109,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643060773376</updated>
-      <workItem from="1643060775138" duration="65855000" />
+      <workItem from="1643060775138" duration="94389000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1643061307647</created>
@@ -119,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643100265395</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="frontend started. redux setup to connect to backend">
+      <created>1643179502500</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1643179502500</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +250,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="frontend files included" />
     <MESSAGE value="backend mostly completed and improved search functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="backend mostly completed and improved search functionality" />
+    <MESSAGE value="frontend started. redux setup to connect to backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="frontend started. redux setup to connect to backend" />
   </component>
 </project>

@@ -113,12 +113,12 @@ public class BBProductsController {
     Object productsBySubclass(@RequestHeader String subclass, Integer pageNum) {
         RestTemplate rest = new RestTemplate();
         var pageParam = pageNum == null ? "" : "&page=" + pageNum;
-        String url = "https://api.bestbuy.com/v1/products(subclass=" + subclass + ")?format=json" + pageParam + sort + keyParam;
+        String url = "https://api.bestbuy.com/v1/products(subclass=" + subclass + ")?format=json&show=" + fields + "&pageSize=20" + pageParam + sort + keyParam;
         return rest.getForObject(url, Object.class);
     }
 
     @CrossOrigin
-    @GetMapping("/byClasses")
+    @PostMapping("/byClasses")
     ProductList productsByClasses(@RequestBody List<String> classList, Integer pageNum) {
         RestTemplate rest = new RestTemplate();
         var classParams = "";
