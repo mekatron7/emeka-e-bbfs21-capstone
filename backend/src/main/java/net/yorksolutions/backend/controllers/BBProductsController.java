@@ -36,7 +36,7 @@ public class BBProductsController {
 
     private String keyParam = "&apiKey=rZF37GU0d0GrH2JG44TOVzYo";
     private String fields = "sku,name,regularPrice,salePrice,customerReviewCount,customerReviewAverage,manufacturer,modelNumber," +
-            "image,images,color,dollarSavings,details,includedItemList,features,upc";
+            "image,images,color,dollarSavings,details,includedItemList,features,upc,url";
     private String sort = "&sort=customerReviewCount.dsc,customerReviewAverage.dsc,startDate.dsc";
     private String classes = "PREMIUM FPTV,VIDEO GAME HARDWARE,GAME PERIPHERALS,HOME FURNITURE,GAMING LAPTOPS,GAMING DESKTOPS,CARDS/COMPONENTS," +
             "PC GAMING ACCYS";
@@ -54,17 +54,17 @@ public class BBProductsController {
 
     @CrossOrigin
     @GetMapping("/byCategory")
-    Object productsByCategory(@RequestHeader String category, Integer pageNum) {
+    ProductList productsByCategory(@RequestHeader String category, Integer pageNum) {
         RestTemplate rest = new RestTemplate();
         var pageParam = pageNum == null ? "" : "&page=" + pageNum;
         String url = "https://api.bestbuy.com/v1/products(categoryPath.name=\"" + category + "\")?format=json&show=" + fields + "&pageSize=20" + pageParam + sort + keyParam;
         System.out.println(url);
-        return rest.getForObject(url, Object.class);
+        return rest.getForObject(url, ProductList.class);
     }
 
     @CrossOrigin
     @GetMapping("/search")
-    Object search(@RequestHeader String search, Integer pageNum) {
+    ProductList search(@RequestHeader String search, Integer pageNum) {
         RestTemplate rest = new RestTemplate();
         var pageParam = pageNum == null ? "" : "&page=" + pageNum;
         var searchTerms = search.split(" ");
@@ -74,7 +74,7 @@ public class BBProductsController {
             searchParams += searchKey + searchTerms[i];
         }
         String url = "https://api.bestbuy.com/v1/products(" + searchParams + ")?format=json&show=" + fields + "&pageSize=20" + pageParam + sort + keyParam;
-        return rest.getForObject(url, Object.class);
+        return rest.getForObject(url, ProductList.class);
     }
 
     @CrossOrigin
@@ -110,11 +110,11 @@ public class BBProductsController {
 
     @CrossOrigin
     @GetMapping("/bySubclass")
-    Object productsBySubclass(@RequestHeader String subclass, Integer pageNum) {
+    ProductList productsBySubclass(@RequestHeader String subclass, Integer pageNum) {
         RestTemplate rest = new RestTemplate();
         var pageParam = pageNum == null ? "" : "&page=" + pageNum;
         String url = "https://api.bestbuy.com/v1/products(subclass=" + subclass + ")?format=json&show=" + fields + "&pageSize=20" + pageParam + sort + keyParam;
-        return rest.getForObject(url, Object.class);
+        return rest.getForObject(url, ProductList.class);
     }
 
     @CrossOrigin

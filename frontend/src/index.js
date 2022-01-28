@@ -5,6 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Provider} from "react-redux";
 import {applyMiddleware, createStore} from "redux";
 import userReducer from './modules/user'
+import ScrollToTop from "./components/ScrollToTop";
+import {BrowserRouter} from "react-router-dom";
+import './index.css'
 
 const asyncMiddleware = storeAPI => next => action => {
     if (typeof action === 'function') {
@@ -18,7 +21,10 @@ const store = createStore(userReducer, middlewareEnhancer)
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <BrowserRouter>
+            <ScrollToTop/>
+            <App />
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root')
 );

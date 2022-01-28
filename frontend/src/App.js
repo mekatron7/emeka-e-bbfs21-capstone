@@ -6,10 +6,8 @@ import SiteRouter from "./components/SiteRouter";
 function App({currentUser}) {
   return (
       <Container fluid>
-        <Row>
-          {currentUser !== null ? <Col><SiteRouter/></Col>
-              : <Col xs={6}><Login/></Col>}
-        </Row>
+          {currentUser !== null ? <SiteRouter/>
+              : <Login/>}
       </Container>
   );
 }

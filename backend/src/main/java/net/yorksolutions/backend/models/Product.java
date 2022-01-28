@@ -65,4 +65,6 @@ public class Product {
     List<Feature> features;
     @JsonProperty
     String upc;
+    @JsonProperty
+    String url;
 }

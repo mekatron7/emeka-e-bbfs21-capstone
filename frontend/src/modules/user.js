@@ -352,9 +352,9 @@ export function createRenovation(id, type) {
     }
 }
 
-export function editItem(item) {
+export function addProduct(item) {
     return function sideEffect(dispatch) {
-        fetch("http://localhost:8080/api/renovations/editItem", {
+        fetch("http://localhost:8080/api/renovations/addProduct", {
             method: "PUT",
             headers: {
                 'Content-Type' : 'application/json'

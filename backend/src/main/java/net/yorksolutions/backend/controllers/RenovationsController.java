@@ -9,6 +9,7 @@ import net.yorksolutions.backend.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +81,14 @@ public class RenovationsController {
     String editRenovation(@RequestBody RenovationPlan renovation) {
         renovationRepo.save(renovation);
         return "success";
+    }
+
+    @CrossOrigin
+    @PutMapping("/addProduct")
+    RenovationPlan addProduct(@RequestBody Item item) {
+        item.dateAdded = LocalDateTime.now();
+        itemRepo.save(item);
+        return renovationRepo.findById(item.planId).get();
     }
 
     @CrossOrigin
