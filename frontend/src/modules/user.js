@@ -17,8 +17,7 @@ const initialState = {
     showRegisterModal: false,
     errorMessage: '',
     currentRenovation: null,
-    spotName: '',
-    pageNumber: undefined
+    spotName: ''
 }
 
 export default function reducer(state = initialState, action) {
@@ -365,6 +364,40 @@ export function addProduct(item) {
                 return alert('Failed to connect to server.')
             response.json().then(renovation => {
                 dispatch(setCurrentRenovation(renovation))
+            })
+        }).catch(error => alert(error))
+    }
+}
+
+export function getUser(id) {
+    return function sideEffect(dispatch) {
+        fetch("http://localhost:8080/api/users/getUser", {
+            method: "GET",
+            headers: {
+                'id': id
+            }
+        }).then(response => {
+            if (!response.ok)
+                return alert('Failed to retrieve user info.')
+            response.json().then(user => {
+                dispatch(loginSuccess(user))
+            })
+        }).catch(error => alert(error))
+    }
+}
+
+export function deleteRenovation(id) {
+    return function sideEffect(dispatch, getState) {
+        fetch("http://localhost:8080/api/renovations/deleteRenovation", {
+            method: "DELETE",
+            headers: {
+                'id': id
+            }
+        }).then(response => {
+            if (!response.ok)
+                return alert('Failed to delete renovation.')
+            response.text().then(text => {
+                dispatch(getUser(getState().currentUser.id))
             })
         }).catch(error => alert(error))
     }

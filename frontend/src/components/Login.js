@@ -24,7 +24,7 @@ function Login({login,showRegisterModal}){
     return <>
         <Container>
             <Register/>
-            <h1 className='text-center'>Login</h1>
+            <h1 className='text-center mt-4'>Login</h1>
             <div className='d-flex justify-content-center my-5'>
                 <Form style={formStyle} onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formEmail">

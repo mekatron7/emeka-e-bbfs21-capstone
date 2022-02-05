@@ -1,5 +1,6 @@
 package net.yorksolutions.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -23,6 +24,24 @@ public class Item {
     public Integer sku;
 
     @JsonProperty
+    public String name;
+
+    @JsonProperty
+    public String image;
+
+    @JsonProperty
+    public Float regularPrice;
+
+    @JsonProperty
+    public Float salePrice;
+
+    @JsonProperty
+    public Float dollarSavings;
+
+    @JsonProperty
+    public String url;
+
+    @JsonProperty
     public boolean purchased;
 
     @JsonProperty
@@ -33,6 +52,10 @@ public class Item {
 
     @JsonProperty
     public boolean defaultItemSpot;
+
+//    @Transient
+//    @JsonInclude
+//    public Product productInfo;
 
     public Item() {
     }

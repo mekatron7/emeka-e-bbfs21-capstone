@@ -12,6 +12,10 @@ function NewRenovation({userId, createRenovation}) {
         navigate('/renovation')
     }
 
+    function backToHome() {
+        navigate('/')
+    }
+
     return <>
         <Container>
             <h1 className='text-center'>Select a renovation style</h1>
@@ -55,8 +59,8 @@ function NewRenovation({userId, createRenovation}) {
                 </Col>
             </Row>
             <div className='text-center mt-4'>
-                <Button variant='light'>
-                    <Link to='/'>Back to Homepage</Link>
+                <Button variant='outline-secondary' onClick={backToHome}>
+                    Back to Homepage
                 </Button>
             </div>
         </Container>

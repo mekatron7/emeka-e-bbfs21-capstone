@@ -1,10 +1,17 @@
 import {connect} from "react-redux";
-import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import {Badge, Button, Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {bindActionCreators} from "redux";
-import {setSpotName} from "../modules/user";
+import {getUser, setSpotName} from "../modules/user";
+import {useNavigate} from "react-router";
 
-function Renovation({currentRenovation, setSpotName}) {
+function Renovation({currentRenovation, id, setSpotName, getUser}) {
+    const navigate = useNavigate()
+
+    function backToHome() {
+        getUser(id)
+        navigate('/')
+    }
 
     return <>
         <Container>
@@ -14,23 +21,25 @@ function Renovation({currentRenovation, setSpotName}) {
                 {currentRenovation?.items.map((item, idx) =>
                     <Col sm={4} className='mt-4'>
                         <Card>
-                            <Card.Img variant="top" src="holder.js/100px180" />
+                            <Card.Img style={{maxHeight:'100px', objectFit:'contain'}} variant="top" src={item.image} />
                             <Card.Body className='text-center'>
-                                <Card.Title>{item.itemSpotName}</Card.Title>
-                                <Card.Text>
-                                    {item?.sku}
-                                </Card.Text>
+                                <Card.Title className='text-center'>{item.itemSpotName}</Card.Title>
+                                <Card.Text>{item.name}</Card.Text>
+                                <Card.Text className='text-center'>{item.salePrice > 0 && '$' + item.salePrice} {item.dollarSavings > 0 && <Badge bg='danger'>Save ${item.dollarSavings}</Badge> }</Card.Text>
                                 <Button variant="outline-primary" onClick={() => setSpotName(item.itemSpotName)}>
                                     <Link to="/products">View Products</Link>
                                 </Button>
+                                {item.sku !== null &&
+                                    <Button className='ms-3' variant='outline-info' href={item.url} target='_blank'>View Product Details</Button>
+                                }
                             </Card.Body>
                         </Card>
                     </Col>
                 )}
             </Row>
             <div className='text-center mt-4'>
-                <Button variant='light'>
-                    <Link to='/'>Back to Homepage</Link>
+                <Button variant='light' onClick={backToHome}>
+                    Back to Homepage
                 </Button>
             </div>
         </Container>
@@ -40,12 +49,13 @@ function Renovation({currentRenovation, setSpotName}) {
 
 function mapStateToProps(state) {
     return {
-        currentRenovation: state.currentRenovation
+        currentRenovation: state.currentRenovation,
+        id: state.currentUser.id
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({setSpotName}, dispatch)
+    return bindActionCreators({setSpotName, getUser}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Renovation)

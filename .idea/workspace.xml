@@ -4,23 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f37be102-87e6-4a33-90fa-9af5b6b53338" name="Changes" comment="renovation plans can be created and products can be browsed and selected (no pagination yet)">
+    <list default="true" id="f37be102-87e6-4a33-90fa-9af5b6b53338" name="Changes" comment="frontend lookin hella sleek thanks to Allison.&#10;pagination added">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/BBProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/BBProductsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/RenovationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/RenovationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.h2.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data.h2.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.h2.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/data.h2.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/models/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/repositories/ItemRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/net/yorksolutions/backend/repositories/ItemRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.h2.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.h2.trace.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/NewRenovation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NewRenovation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Products.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Renovation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Renovation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Renovations.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/SiteRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SiteRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/modules/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +70,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -115,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1643060773376</updated>
-      <workItem from="1643060775138" duration="130040000" />
+      <workItem from="1643060775138" duration="161939000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1643061307647</created>
@@ -152,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643209000266</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="frontend lookin hella sleek thanks to Allison.&#10;pagination added">
+      <created>1643359969206</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1643359969206</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +269,7 @@
     <MESSAGE value="backend mostly completed and improved search functionality" />
     <MESSAGE value="frontend started. redux setup to connect to backend" />
     <MESSAGE value="renovation plans can be created and products can be browsed and selected (no pagination yet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="renovation plans can be created and products can be browsed and selected (no pagination yet)" />
+    <MESSAGE value="frontend lookin hella sleek thanks to Allison.&#10;pagination added" />
+    <option name="LAST_COMMIT_MESSAGE" value="frontend lookin hella sleek thanks to Allison.&#10;pagination added" />
   </component>
 </project>

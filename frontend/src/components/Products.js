@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
 import {bindActionCreators} from "redux";
-import {addProduct, getProducts} from "../modules/user";
+import {addProduct, getProducts, getUser} from "../modules/user";
 import {Badge, Button, Col, Container, Form, Image, Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import {useNavigate} from "react-router";
 import {Link} from "react-router-dom";
 
-function Products({item, spotName, results, getProducts, addProduct}) {
+function Products({item, spotName, results, id, getProducts, addProduct, getUser}) {
     const navigate = useNavigate()
 
     const [pageNumber, setPageNumber] = useState(1)
@@ -15,13 +15,18 @@ function Products({item, spotName, results, getProducts, addProduct}) {
         getProducts(spotName, pageNumber)
     }, [pageNumber])
 
-    function addItem(sku) {
-        addProduct({...item, sku})
+    function addItem(sku, name, image, regularPrice, salePrice, dollarSavings, url) {
+        addProduct({...item, name, sku, image, regularPrice, salePrice, dollarSavings, url})
         navigate('/renovation')
     }
 
     function getPage(e) {
         setPageNumber(e.target.value)
+    }
+
+    function backToHome() {
+        getUser(id)
+        navigate(('/'))
     }
 
     return <>
@@ -30,14 +35,14 @@ function Products({item, spotName, results, getProducts, addProduct}) {
             <hr/>
             <Row>
                 <Col>
-                    <Button variant='outline-dark' className='me-3'>
-                        <Link to='/'>Back to Homepage</Link>
+                    <Button variant='outline-dark' className='me-3' onClick={backToHome}>
+                        Back to Home
                     </Button>
                     <Button variant='outline-primary'>
                         <Link to='/renovation'>Back to Renovation</Link>
                     </Button>
                 </Col>
-                <Col>
+                <Col sm={1}>
                     Page
                     <Form.Select size='sm' style={{width: '4em'}} defaultValue={1}
                                  onChange={getPage}>
@@ -72,7 +77,7 @@ function Products({item, spotName, results, getProducts, addProduct}) {
                     <Col>
                         <h1>{prod.regularPrice !== prod.salePrice ? '$' + prod.salePrice : '$' + prod.regularPrice}</h1>
                         {prod.dollarSavings > 0 && <><h3><Badge bg='danger'>Save ${prod.dollarSavings}</Badge></h3> <h6>Was ${prod.regularPrice}</h6></>}
-                        <Button variant='outline-primary' className='me-3' onClick={() => addItem(prod.sku)}>Add Product</Button>
+                        <Button variant='outline-primary' className='me-3' onClick={() => addItem(prod.sku, prod.name, prod.image, prod.regularPrice, prod.salePrice, prod.dollarSavings, prod.url)}>Add Product</Button>
                         <Button variant='outline-info' href={prod.url} target='_blank'>View Product Details</Button>
                     </Col>
                     <hr/>
@@ -87,12 +92,13 @@ function mapStateToProps(state) {
         item: state.currentRenovation.items.find(i => i.itemSpotName === state.spotName),
         spotName: state.spotName,
         pageNumber: state.pageNumber,
-        results: state.results
+        results: state.results,
+        id: state.currentUser.id
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getProducts, addProduct}, dispatch)
+    return bindActionCreators({getProducts, addProduct, getUser}, dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products)

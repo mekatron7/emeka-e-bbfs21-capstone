@@ -4,6 +4,7 @@ import net.yorksolutions.backend.models.User;
 import net.yorksolutions.backend.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 
@@ -12,6 +13,9 @@ import java.util.HashMap;
 public class UsersController {
     @Autowired
     UserRepo userRepo;
+
+//    @Autowired
+//    BBProductsController productsController;
 
     @CrossOrigin
     @PostMapping("/register")
@@ -32,6 +36,13 @@ public class UsersController {
             response.put("message", "The credentials you entered aren't valid. Please try again.");
             return response;
         }
+//        var theUser = foundUser.get();
+//        theUser.planList.forEach(renovationPlan -> {
+//            renovationPlan.items.forEach(item -> {
+//                if (item.sku != null)
+//                    item.productInfo = productsController.prodBySku(item.sku);
+//            });
+//        });
         response.put("message", "success");
         response.put("user", foundUser.get());
         return response;
@@ -53,5 +64,11 @@ public class UsersController {
         userRepo.findById(id).orElseThrow();
         userRepo.deleteById(id);
         return "success";
+    }
+
+    @CrossOrigin
+    @GetMapping("/getUser")
+    User getUser(@RequestHeader Long id) {
+        return userRepo.findById(id).orElseThrow();
     }
 }
